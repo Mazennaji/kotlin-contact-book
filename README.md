@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Kotlin Contact Book logo" width="200"/>
+</p>
+
 # 📇 Kotlin Contact Book
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
