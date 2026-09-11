@@ -8,4 +8,6 @@ class Contact(
         Phone: $phone
         Email: ${email ?: "N/A"}
     """.trimIndent()
+
+    override fun toString(): String = "$name ($phone)"
 }
