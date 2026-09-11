@@ -23,4 +23,14 @@ class ContactBook {
 
     fun search(query: String): List<Contact> =
         contacts.filter { it.name.lowercase().contains(query.lowercase()) }
+
+    fun listAll() {
+        if (contacts.isEmpty()) {
+            println("Contact book is empty.")
+            return
+        }
+        for (i in contacts.indices) {
+            println("${i + 1}. ${contacts[i]}")
+        }
+    }
 }
