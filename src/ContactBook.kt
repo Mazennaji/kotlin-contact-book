@@ -1,5 +1,5 @@
 class ContactBook {
-    private val contacts = mutableListOf<Contact>()   // mutable list of contacts
+    private val contacts = mutableListOf<Contact>()
 
     fun add(contact: Contact) {
         if (contacts.contains(contact)) {
@@ -7,6 +7,17 @@ class ContactBook {
         } else {
             contacts.add(contact)
             println("Added: $contact")
+        }
+    }
+
+    fun remove(phone: String) {
+        val found = contacts.find { it.phone == phone }
+        when (found) {
+            null -> println("No contact with phone $phone")
+            else -> {
+                contacts.remove(found)
+                println("Removed: $found")
+            }
         }
     }
 }
