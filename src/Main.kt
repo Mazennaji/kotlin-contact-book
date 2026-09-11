@@ -1,26 +1,49 @@
 fun main() {
     val book = ContactBook()
 
-    book.add(Contact("Alice", "12345", "alice@mail.com"))
-    book.add(Contact("Bob", "67890"))
-    book.add(Contact("Charlie", "11111"))
-    book.add(Contact("Duplicate", "12345"))
+    while (true) {
+        println(
+            """
+            
+            ===== Contact Book =====
+            1. Add contact
+            2. Remove contact
+            3. Search contact
+            4. List all contacts
+            5. Exit
+            """.trimIndent()
+        )
+        print("Choose an option: ")
 
-    println("\n--- All Contacts ---")
-    book.listAll()
-
-    println("\n--- Search 'a' ---")
-    val results = book.search("a")
-    results.forEach {
-        println(it.details())
-        println()
+        when (readln().trim()) {
+            "1" -> {
+                print("Name: ")
+                val name = readln().trim()
+                print("Phone: ")
+                val phone = readln().trim()
+                print("Email (leave blank to skip): ")
+                val email = readln().trim().ifBlank { null }
+                book.add(Contact(name, phone, email))
+            }
+            "2" -> {
+                print("Phone to remove: ")
+                book.remove(readln().trim())
+            }
+            "3" -> {
+                print("Search name: ")
+                val results = book.search(readln().trim())
+                if (results.isEmpty()) {
+                    println("No matches found.")
+                } else {
+                    results.forEach { println(it.details()); println() }
+                }
+            }
+            "4" -> book.listAll()
+            "5" -> {
+                println("Goodbye! Total contacts: ${book.count}")
+                return
+            }
+            else -> println("Invalid option, try again.")
+        }
     }
-
-    println("--- Remove 67890 ---")
-    book.remove("67890")
-
-    println("\n--- After Removal ---")
-    book.listAll()
-
-    println("\nTotal contacts: ${book.count}")
 }
