@@ -20,4 +20,7 @@ class ContactBook {
             }
         }
     }
+
+    fun search(query: String): List<Contact> =
+        contacts.filter { it.name.lowercase().contains(query.lowercase()) }
 }
