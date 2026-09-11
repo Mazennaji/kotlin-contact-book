@@ -1,3 +1,3 @@
 fun main() {
-    println("Hello World!")
+    println("Welcome to Contact Book!")
 }
