@@ -12,7 +12,7 @@ class ContactBook {
 
     fun remove(phone: String) {
         val found = contacts.find { it.phone == phone }
-        when (found) {
+        when (found) {                                 // when expression
             null -> println("No contact with phone $phone")
             else -> {
                 contacts.remove(found)
@@ -33,4 +33,7 @@ class ContactBook {
             println("${i + 1}. ${contacts[i]}")
         }
     }
+
+    val count: Int
+        get() = contacts.size
 }
